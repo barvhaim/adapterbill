@@ -8,12 +8,11 @@ version = "0.1.0"
 description = "A bill of materials for LoRA and PEFT adapters"
 readme = "README.md"
 requires-python = ">=3.10"
-license = {text = "MIT"}
+license = "MIT"
 authors = [{name = "Bar V. Haim"}]
 keywords = ["lora", "peft", "sbom", "safetensors", "ai-security"]
 classifiers = [
   "Development Status :: 3 - Alpha",
-  "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3",
   "Topic :: Security",
 ]
@@ -23,7 +22,7 @@ dependencies = []
 adapterbill = "adapterbill.cli:main"
 
 [project.urls]
-Repository = "https://github.com/njs2017/adapterbill"
+Repository = "https://github.com/barvhaim/adapterbill"
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -19,6 +19,11 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
-      - run: python -m pip install -e .
-      - run: python -m unittest discover -s tests -v
-      - run: adapterbill scan examples/minimal-adapter --format json
+      - uses: astral-sh/setup-uv@v8
+        with:
+          enable-cache: true
+      - run: uv sync --locked
+      - run: uv run python -m unittest discover -s tests -v
+      - run: bash -n examples/granitelib-rag/scan.sh
+      - run: uv run adapterbill scan examples/minimal-adapter --format json
+      - run: uv build

@@ -7,9 +7,9 @@ AdapterBill statically inspects an adapter directory before you load it. It inve
 ## Quick start
 
 ```bash
-python -m pip install -e .
-adapterbill scan examples/minimal-adapter
-adapterbill scan examples/minimal-adapter --format json
+uv sync --locked
+uv run adapterbill scan examples/minimal-adapter
+uv run adapterbill scan examples/minimal-adapter --format json
 ```
 
 Example output:
@@ -39,10 +39,23 @@ Findings:
 
 AdapterBill reports deterministic metadata and risk signals. It does not certify that an adapter is safe or provide legal advice.
 
+## Real-world Granite examples
+
+Scan signed LoRA and aLoRA artifacts from [IBM Granite's RAG adapter library](https://huggingface.co/ibm-granite/granitelib-rag-r1.0):
+
+```bash
+./examples/granitelib-rag/scan.sh
+./examples/granitelib-rag/scan.sh query_rewrite/granite-4.0-micro/alora
+```
+
+The examples pin the Hugging Face repository revision and download only the selected adapter directory. See [`examples/granitelib-rag`](examples/granitelib-rag) for additional variants and JSON output.
+
 ## Development
 
 ```bash
-python -m unittest discover -s tests -v
+uv sync --locked
+uv run python -m unittest discover -s tests -v
+uv build
 ```
 
 ## License
